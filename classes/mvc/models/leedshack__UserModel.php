@@ -27,7 +27,7 @@ class leedshack__UserModel extends leedshack__BaseModel {
 	}
 
 	public static function loadByPhoneNumber($db, $phonenumber){
-		$row = $db->selectOne(static::$table,"phonenumber = %s", $phonenumber);
+		$row = $db->fetchOne(static::$table,"phonenumber = %s", $phonenumber);
 
 		if(!$row){
 			return false;
