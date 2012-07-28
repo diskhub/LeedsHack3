@@ -36,7 +36,7 @@ class leedshack__UserModel extends leedshack__BaseModel {
 		return $object;
 	}
 	public static function loadByPhoneNumber($db, $phonenumber){
-		$row = $db->selectOne("
+		$row = $db->select("
 			SELECT *
 			FROM user
 			WHERE phonenumber = %s
