@@ -35,8 +35,7 @@ class leedshack__QuizUserModel extends leedshack__BaseModel {
 			INNER JOIN quiz q
 			ON qu.quizid = q.id
 			WHERE qu.userid = %i
-			AND q.timestart <= NOW()
-			AND q.timeend IS NULL
+			AND q.isactive = 1
 			ORDER BY qu.id DESC
 			"
 			,$userid);
