@@ -12,9 +12,6 @@ class leedshack__UserModel extends leedshack__BaseModel {
 			'id = %i', $object->getId(),
 			'phonenumber = %s', $object->getPhoneNumber()
 		);
-		if(!$object->getId()){
-			$this->id = mysql_insert_id();
-		}
 	}
 
 	protected static function loadFromSqlRow($row) {
@@ -27,7 +24,7 @@ class leedshack__UserModel extends leedshack__BaseModel {
 	}
 
 	public static function loadByPhoneNumber($db, $phonenumber){
-		$row = $db->selectOne(static::$table,"phonenumber = %s", $phonenumber);
+		$row = $db->fetchOne('*',static::$table,"phonenumber = %s", $phonenumber);
 
 		if(!$row){
 			return false;
