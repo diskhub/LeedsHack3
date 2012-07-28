@@ -42,36 +42,34 @@
             </div> <hr /><hr />
             <div class="container">
                 <div class="hero-unit">
-                   <h2>PubQuiz Dashboard</h2>
+                   <h2>New Question</h2>
                 </div>
                 <div class="row" style="min-height: 185px;">
-                	<div class="span3 well" style="min-height: 185px;">
-                    	<h3>Stats</h3>
-                    	<ul>
-                            <li>Current # of Users: 32</li>
-                            <li>Current # of Questions: 11</li>
-                            <li>Current # of Answers: 17</li>
-                    	</ul>
-                    </div>
-                    <div class="span3 well" style="min-height: 185px;">
-                    	<h3>Scoreboard</h3>
-                    	<div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                        	<div class="bar" style="width: 60%;">
-                            </div>
-                        </div>
-                        <p>60% Have Answered Correctly.</p>
-                    </div>
-                    <div class="span4 well" style="min-height: 185px;">
-                    	<h3>Current Question</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu nunc ac metus luctus feugiat. Nulla aliquam risus ut diam venenatis quis vehicula risus amet.</p>
-                        <p>Time Elapsed: </p>
-                        <p><a href="#">View All Questions</a> | <a href="#">Next Question &raquo;</a></p>
+                	<div class="span11 well" style="min-height: 185px;">
+                    	<form action="#" method="post">
+                        <div class="questionarea">
+                        <h3>Enter question text</h3><hr />
+                        	<input type="text" class="countChars" rel="question" placeholder="Enter question here.." style="margin: 0 auto; width:1060px;" maxlength="160"/>
+                            <p class="pull-right"><span class="questionCharsLeft">160</span> Characters Left</p><br /><br />
+                        <h3>Enter Correct Answer</h3><hr />
+                        	<input type="text" class="countChars" rel="answer" placeholder="Enter answer here.." style="margin: 0 auto; width:1060px;" maxlength="160"/>
+                            <p class="pull-right"><span class="answerCharsLeft">160</span> Characters Left</p>
+                           </div>
+                           
+                        </form>
+                        <p><a href="#" class="
                     </div>
                 </div>
             </div>
           </body>
             <script>
 				$('.dropdown-toggle').dropdown();
+				$('.countChars').keyup(function(){
+					var attr = $(this).attr('rel');
+					var length = $(this).val().length;
+					var total = 160 - length;
+					$('.' + attr + 'CharsLeft').html(total);
+				});
             </script>
     </body>
 </html>
