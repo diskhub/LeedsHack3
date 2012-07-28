@@ -16,6 +16,10 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 			'qm_id = %i', $object->getQmId(),
 			'is_active = %i', $object->getIsactive()
 		);
+
+		if(!$object->getId()) {
+			$object->setId($db->lastInsertId());
+		}
 	}
 
 	protected static function loadFromSqlRow($row) {
