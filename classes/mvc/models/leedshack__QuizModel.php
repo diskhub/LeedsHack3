@@ -25,5 +25,13 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 
 		return $object;
 	}
+	public static function loadById($db, $id){
+		$row = $db->fetch('*',static::$table, 'id = %i', $id);
+		if(!$row){
+			throw new Exception();
+
+		}
+		return static::loadFromSqlRow($row);
+	}
 }
 ?>
