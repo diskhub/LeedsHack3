@@ -22,7 +22,6 @@ class leedshack__smsController extends leedshack__AbstractController {
 				$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
 				
 				if(!empty($user)){
-					echo "lol";
 					$mdlUser->setId($user->getId());
 					$mdlUser->setPhoneNumber($user->getPhoneNumber());
 				}else{
@@ -32,10 +31,11 @@ class leedshack__smsController extends leedshack__AbstractController {
 
 				try{
 					
-					/*leedshack__UserModel::write($this->app->init_db, $mdlUser);
+					leedshack__UserModel::write($this->app->init_db, $mdlUser);
+					$mdlUser->setId(mysql_insert_id());
 					$mdlQuizUser->setUserId($mdlUser->getId());
 					$mdlQuizUser->setQuizId($mdlQuiz->getId());
-					leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);*/
+					leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);
 
 				}catch(Exception $e){
 					echo "<pre>";
