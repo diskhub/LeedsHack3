@@ -17,8 +17,8 @@ class leedshack__smsController extends leedshack__AbstractController {
 			echo "unsub from quiz";
 
 		}else{
-			//this is either an answer to a question or junk
 
+			//this is either an answer to a question or junk
 			echo "Answer or junk!";
 		}
 
