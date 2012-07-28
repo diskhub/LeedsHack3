@@ -14,7 +14,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 			$quiz_id = settype($split[1], "integer");
 
 			$quiz = leedshack__QuizModel::loadById($this->app->init_db, $quiz_id);
-			if(!empty($quiz)){
+			if(isset($quiz)){
 				//add user and join the quiz
 				$mdlUser = new leedshack__UserModel();
 				$mdlQuizUser = new leedshack__QuizUserModel();
