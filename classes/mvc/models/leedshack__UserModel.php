@@ -7,13 +7,23 @@ class leedshack__UserModel extends leedshack__BaseModel {
 	protected $phoneNumber;
 	
 	public static function write($db, $object) {
-		$db->insertOrUpdateOne(
-			static::$table,
-			'id = %i', $object->getId(),
-			'phonenumber = %s', $object->getPhoneNumber()
-		);
-		if(!$object->getId()){
-			$this->id = mysql_insert_id();
+		if(isset($object->getId)){
+			$db->insertOrUpdateOne(
+				static::$table,
+				'id = %i', $object->getId(),
+				'phonenumber = %s', $object->getPhoneNumber()
+			);
+			if(!$object->getId()){
+				$this->id = mysql_insert_id();
+			}
+		}else{
+			$db->insertOrUpdateOne(
+				static::$table,
+				'phonenumber = %s', $object->getPhoneNumber()
+			);
+			if(!$object->getId()){
+				$this->id = mysql_insert_id();
+			}
 		}
 	}
 
