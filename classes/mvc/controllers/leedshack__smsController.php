@@ -2,20 +2,32 @@
 class leedshack__smsController extends leedshack__AbstractController {
 	function page_inbound() {
 
-		if(isset($_GET))
-		{
-			$message->to = $_GET['to'];
-			$message->from = $_GET['from'];
-			$message->content = $_GET['content'];
-			$message->msg_id = $_GET['msg_id'];
-		}
+		$message->to = (isset($_GET['to']))?$_GET['to']:false;
+		$message->from = (isset($_GET['from']))?$_GET['from']:false;
+		$message->content = (isset($_GET['content']))?$_GET['content']:false;
+		$message->msg_id = (isset($_GET['msg_id']))?$_GET['msg_id']:false;
 
 		//is the message a join or stop command?
-		if(str_pos($message,"join")==0){
+		if(stripos($message->content,"join") === 0){
 
-			echo "join quiz";
+			//add user and join the quiz
+			$mdlUser = new leedshack__UserModel();
+			$mdlQuizUser = new leedshack__QuizUserModel();
 
-		}elseif(str_pos($message,"stop")==0){
+			$mdlUser->setPhoneNumber($message->from);
+
+			try{
+
+				leedshack__UserModel::write($this->app->init_db, $mdlUser);
+				$mdlQuizUser->setUserId($mdlUser->getId());
+				leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);
+
+			}catch(Exception $e){
+				var_dump($e);
+				exit;
+			}
+
+		}elseif(stripos($message->content,"stop") === 0){
 
 			echo "unsub from quiz";
 
