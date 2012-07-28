@@ -19,7 +19,14 @@ class leedshack__smsController extends leedshack__AbstractController {
 				$mdlUser = new leedshack__UserModel();
 				$mdlQuizUser = new leedshack__QuizUserModel();
 
-				$mdlUser->setPhoneNumber($message->from);
+				$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
+
+				if(isset($user)){
+					$mdlUser->setId($user->getId());
+					$mdlUser->setPhoneNumber($user->getPhoneNumber());
+				}else{
+					$mdlUser->setPhoneNumber($message->from);
+				}
 
 				try{
 					
@@ -41,7 +48,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 			//unsub the user from the current quiz they are in
 			//get the user details by their phone number
 			$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
-			if(!empty($user->id)){
+			if(isset($user)){
 				//check to see if the user is in an active quiz
 				$activequiz = leedshack__QuizUserModel::loadActiveQuizByUserId($this->app->init_db, $user->id);
 
@@ -58,7 +65,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 			//get the user id
 			$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
 
-			if(!empty($user->id)){
+			if(isset($user)){
 				//check to see if the user is in an active quiz
 				$activequiz = leedshack__QuizUserModel::loadActiveQuizByUserId($this->app->init_db, $user->id);
 
