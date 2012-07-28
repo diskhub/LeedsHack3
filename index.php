@@ -4,7 +4,7 @@ require_once ( "../atsumi/init.php");
 /* load the necessary packages in Atsumi & project */
 atsumi_Loader::references(array(
 	'atsumi' 	=> 'utility mvc database',
-	'leedshack'	=> 'app mvc'
+	'LeedsHack3'	=> 'app mvc'
 ));
 /* initialise the project settings */
 $settings = new leedshack__Settings();
