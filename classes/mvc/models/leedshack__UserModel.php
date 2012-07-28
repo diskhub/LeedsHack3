@@ -29,7 +29,7 @@ class leedshack__UserModel extends leedshack__BaseModel {
 		$row = $db->selectOne("
 			SELECT *
 			FROM user
-			WHERE phonenumber = %i
+			WHERE phonenumber = %s
 		",
 		$phonenumber
 		);
