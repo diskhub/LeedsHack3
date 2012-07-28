@@ -9,6 +9,7 @@ class leedshack__UserModel extends leedshack__BaseModel {
 	public static function write($db, $object) {
 		$db->insertOrUpdateOne(
 			static::$table,
+			'id = %i', $object->getId(),
 			'phonenumber = %s', $object->getPhoneNumber()
 		);
 		if(!$object->getId()){
