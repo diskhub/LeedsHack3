@@ -14,7 +14,7 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 			'id = %i', $object->getId(),
 			'name = %s', $object->getName(),
 			'qm_id = %i', $object->getQmId(),
-			'isactive = %i', $object->getIsactive()
+			'is_active = %i', $object->getIsactive()
 		);
 	}
 
@@ -24,7 +24,7 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 		$object->setId($row->id);
 		$object->setQmId($row->i_qm_id);
 		$object->setName($row->s_name);
-		$object->setIsactive($row->i_isactive);
+		$object->setIsactive($row->i_is_active);
 
 		return $object;
 	}
