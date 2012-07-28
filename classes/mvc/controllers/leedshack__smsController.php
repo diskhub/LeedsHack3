@@ -6,7 +6,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 		$message->from = (isset($_GET['from']))?$_GET['from']:false;
 		$message->content = (isset($_GET['content']))?urldecode($_GET['content']):false;
 		$message->msg_id = (isset($_GET['msg_id']))?$_GET['msg_id']:false;
-
+		echo $message->content;
 		//is the message a join or stop command?
 		if(stripos($message->content,"join") === 0){
 
