@@ -26,6 +26,14 @@ class leedshack__QuizMasterModel extends leedshack__BaseModel {
 	
 /* FINISH AUTO */
 
+	public static function authenticate($db, $username, $password) {
+		$user = $db->fetchOne('*', 'quizmaster', 'email = %s AND password = %s', $username, $password);
+		if(!$user) {
+			return false;
+		}
+		return $user;
+	}
+
 	public static function loadById($db, $id) {
 		$row = $db->fetchOne('*', static::$table, 'id = %i', (string)$id);
 		if(!$row) {
