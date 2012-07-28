@@ -1,0 +1,10 @@
+RewriteEngine on 
+
+# NOTE: if you move this section to a vhost, add a slash
+# to the beginning of the pattern. E.g. ^/css/(.*)$
+RewriteRule ^css/(.*)$		/data/css/$1 [L]
+RewriteRule ^img/(.*)$		/data/img/$1 [L]
+RewriteRule ^js/(.*)$		/data/js/$1 [L]
+
+RewriteCond %{REQUEST_URI} 	!(/img|/js|/css)
+RewriteRule ^(.*)$ index.php [L]

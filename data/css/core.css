@@ -1,0 +1,5 @@
+html, body { margin: 0; padding: 0; height: 100%; min-height: 100%; }
+#container { min-height: 400px; }
+#header { height: 100px; width: 100%; background: #004; margin: 0; padding: 0; }
+#header h1 { float: left; margin: 30px 0 0 20px; color: #FFF; }
+#body { width: 90%; margin: 0 auto; }
