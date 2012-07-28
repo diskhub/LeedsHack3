@@ -11,7 +11,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 		if(stripos($message->content,"join") === 0){
 
 			$split = explode(' ',$message->content);
-			$quiz_id = settype($split[1], "integer");
+			$quiz_id = $split[1];
 
 			$quiz = leedshack__QuizModel::loadById($this->app->init_db, $quiz_id);
 			if(isset($quiz)){
@@ -24,7 +24,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 					$user = new leedshack__UserModel();
 					$user->setPhoneNumber($message->from);
 					leedshack__UserModel::write($this->app->init_db, $user);
-					$user->setId(mysql_insert_id());
+					$user->setId($db->lastInsertId());
 				}
 				$mdlQuizUser->setUserId($user->getId());
 				$mdlQuizUser->setQuizId($quiz_id);
