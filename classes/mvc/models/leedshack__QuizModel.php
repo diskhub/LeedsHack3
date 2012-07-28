@@ -21,7 +21,7 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 	protected static function loadFromSqlRow($row) {
 		$object = new self;
 
-		$object->setId($row->id);
+		$object->setId($row->i_id);
 		$object->setQmId($row->i_qm_id);
 		$object->setName($row->s_name);
 		$object->setIsactive($row->i_isactive);
