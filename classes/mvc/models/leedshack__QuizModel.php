@@ -6,8 +6,7 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 	protected $id;
 	protected $name;
 	protected $qmId;
-	protected $timestart;
-	protected $timeend;
+	protected $isactive;
 	
 	public static function write($db, $object) {
 		$db->insertOrUpdateOne(
@@ -15,8 +14,7 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 			'id = %i', $object->getId(),
 			'name = %s', $object->getName(),
 			'qm_id = %i', $object->getQmId(),
-			'timstart = %i', $object->getTimestart(),
-			'timeend = %i', $object->getTimeend()
+			'isactive = %i', $object->getIsactive()
 		);
 	}
 
@@ -26,8 +24,7 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 		$object->setId($row->i_id);
 		$object->setQmId($row->i_qm_id);
 		$object->setEmailName($row->s_name);
-		$object->setTimestart($row->i_timestart);
-		$object->setTimeend($row->i_timeend);
+		$object->setIsactive($row->i_isactive);
 
 		return $object;
 	}
