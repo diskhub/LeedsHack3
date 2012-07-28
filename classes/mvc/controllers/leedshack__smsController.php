@@ -4,7 +4,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 
 		$message->to = (isset($_GET['to']))?$_GET['to']:false;
 		$message->from = (isset($_GET['from']))?$_GET['from']:false;
-		$message->content = (isset($_GET['content']))?$_GET['content']:false;
+		$message->content = (isset($_GET['content']))?urldecode($_GET['content']):false;
 		$message->msg_id = (isset($_GET['msg_id']))?$_GET['msg_id']:false;
 
 		//is the message a join or stop command?
@@ -70,7 +70,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 					echo "<pre>";
 					var_dump($activequiz);
 					echo "</pre>";
-				}
+				}else echo "junk!";
 			}
 
 		}
