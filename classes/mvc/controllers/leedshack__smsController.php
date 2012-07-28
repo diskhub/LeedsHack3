@@ -22,9 +22,9 @@ class leedshack__smsController extends leedshack__AbstractController {
 				$mdlUser->setPhoneNumber($message->from);
 
 				try{
-					echo "LOL";
-					/*leedshack__UserModel::write($this->app->init_db, $mdlUser);
-					$mdlQuizUser->setUserId($mdlUser->getId());
+					
+					leedshack__UserModel::write($this->app->init_db, $mdlUser);
+					/*$mdlQuizUser->setUserId($mdlUser->getId());
 					$mdlQuizUser->setQuizId($mdlQuiz->getId());
 					leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);*/
 
