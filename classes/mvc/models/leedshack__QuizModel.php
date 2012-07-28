@@ -31,7 +31,7 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 	public static function loadById($db, $id){
 		$row = $db->selectOne("SELECT * FROM quiz WHERE id = %i", $id);
 		if(!$row){
-			throw new Exception();
+			return null;
 		}
 		return static::loadFromSqlRow($row);
 	}
