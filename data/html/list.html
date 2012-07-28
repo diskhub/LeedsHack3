@@ -28,18 +28,26 @@
         data.addColumn('string', 'Questions');
         data.addColumn('number', '');
         data.addRows([
-          ['Mushrooms', 99],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
+          ['Question 1', 88],
+          ['Question 2', 19],
+          ['Question 3', 44],
+          ['Question 4', 94]
         ]);
 
         // Set chart options
         var options = {'title':'Accuracy of Answers',
                        'width':400,
                        'height':300,
-					   'backgroundColor': { 'fill' : '#f5f5f5'}};
+					   'backgroundColor': { 'fill' : '#f5f5f5'},
+					   'hAxis':{
+						 title: "Percentage", 
+						  viewWindowMode:'explicit',
+						  viewWindow:{
+							max:100
+             			  }  
+					   },
+					   legend: {position: 'none'}
+					   };
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
@@ -82,84 +90,6 @@
                 <div class="span5 well">
                     <h3>Alex Bowers</h3>
                     <div id="chart_div"></div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
-                </div>
-                <div class="span3 well">
-                    <h3>Alex Bowers</h3>
-                    <div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                    	<div class="bar" style="width: 60%;"></div>
-                    </div>
-                	<p>60% Correct.</p>
                 </div>
             </div>
           </body>
