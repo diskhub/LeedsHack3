@@ -25,5 +25,14 @@ class leedshack__QuizUserModel extends leedshack__BaseModel {
 
 		return $object;
 	}
+
+	public static function loadByUserID($db, $userid){
+		$row = $db->fetch('*', static::$table, 'userid = %i', $id);
+		if(!$row){
+			throw new Exception();
+		}
+
+		return static::loadFromSqlRow($row);
+	}
 }
 ?>

@@ -1,6 +1,5 @@
 <?php
 	$root = "";
-	require($root . 'lib/php/functions.php');
     require($root . 'lib/php/header.php');
 ?>
             <div class="container">
