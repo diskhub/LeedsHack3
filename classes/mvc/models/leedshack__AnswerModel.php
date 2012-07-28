@@ -14,11 +14,11 @@ class leedshack__AnswerModel extends leedshack__BaseModel {
 		$db->insertOrUpdateOne(
 			static::$table,
 			'id = %i', $object->getId(),
-			'answer = %a', $object->getAnswer(),
-			'iscorrect = %c', $object->getIscorrect(),
-			'user_id = %u', $object->getUser_id(),
-			'timestamp = %t', $object->getTimestamp(),
-			'quiz_id = %q', $object->getQuiz_id()
+			'answer = %s', $object->getAnswer(),
+			'iscorrect = %i', $object->getIscorrect(),
+			'user_id = %i', $object->getUser_id(),
+			'timestamp = %i', $object->getTimestamp(),
+			'quiz_id = %i', $object->getQuiz_id()
 		);
 	}
 
@@ -26,11 +26,11 @@ class leedshack__AnswerModel extends leedshack__BaseModel {
 		$object = new self;
 
 		$object->setId($row->i_id);
-		$object->setAnswer($row->a_answer);
-		$object->setIscorrect($row->c_iscorrect);
-		$object->setUser_id($row->u_user_id);
-		$object->setTimestamp($row->t_timestamp);
-		$object_>setQuiz_id($row->q_quiz_id);
+		$object->setAnswer($row->s_answer);
+		$object->setIscorrect($row->i_iscorrect);
+		$object->setUser_id($row->i_user_id);
+		$object->setTimestamp($row->i_timestamp);
+		$object_>setQuiz_id($row->i_quiz_id);
 
 		return $object;
 	}
