@@ -41,13 +41,38 @@ class leedshack__smsController extends leedshack__AbstractController {
 			}
 		}elseif(stripos($message->content,"stop") === 0){
 
-			//unsub the user from the quiz
+			//unsub the user from the current quiz they are in
+			//get the user details by their phone number
+			$user = leedshack__UserModel::loadByPhoneNumber($message->from);
+			if(!empty($user->id)){
+				//check to see if the user is in an active quiz
+				$activequiz = leedshack__QuizUserModel::loadActiveQuizByUserId($this->app->init_db, $user->id);
 
+				if(isset($activequiz)){
+					//the user is in an active quiz . . delete the row
+					leedshack__QuizUserModel::deleteByUserId($user->id);
+				}
+			}
 
 		}else{
 
 			//this is either an answer to a question or junk
-			echo "Answer or junk!";
+			
+			//get the user id
+			$user = leedshack__UserModel::loadByPhoneNumber($message->from);
+
+			if(!empty($user->id)){
+				//check to see if the user is in an active quiz
+				$activequiz = leedshack__QuizUserModel::loadActiveQuizByUserId($this->app->init_db, $user->id);
+
+				if(isset($activequiz)){
+					//user is in an active quiz
+					echo "<pre>";
+					var_dump($activequiz);
+					echo "</pre>";
+				}
+			}
+
 		}
 
 		exit;

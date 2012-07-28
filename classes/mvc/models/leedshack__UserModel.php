@@ -25,5 +25,20 @@ class leedshack__UserModel extends leedshack__BaseModel {
 
 		return $object;
 	}
+	public static function loadByPhoneNumber($db, $phonenumber){
+		$row = $db->selectOne("
+			SELECT *
+			FROM user
+			WHERE phonenumber = %i
+		",
+		$phonenumber
+		);
+
+		if(!$row){
+			return null;
+		}
+
+		return static::loadFromSqlRow($row);
+	}
 }
 ?>

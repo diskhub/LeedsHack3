@@ -15,7 +15,9 @@ class leedshack__QuizUserModel extends leedshack__BaseModel {
 			'userid = %i', $object->getUserId()
 		);
 	}
-
+	public static function deleteByUserId($db, $userid){
+		$db->delete(static::$table, 'userid = %i', $userid);
+	}
 	protected static function loadFromSqlRow($row) {
 		$object = new self;
 
@@ -26,10 +28,20 @@ class leedshack__QuizUserModel extends leedshack__BaseModel {
 		return $object;
 	}
 
-	public static function loadByUserID($db, $userid){
-		$row = $db->fetch('*', static::$table, 'userid = %i', $id);
+	public static function loadActiveQuizByUserId($db, $userid){
+		$row = $db->selectOne("
+			SELECT * 
+			FROM quizuser qu
+			INNER JOIN quiz q
+			ON qu.quizid = q.id
+			WHERE qu.userid = %i
+			AND q.timestart <= NOW()
+			AND q.timeend IS NULL
+			ORDER BY qu.id DESC
+			"
+			,$userid);
 		if(!$row){
-			throw new Exception();
+			return null;
 		}
 
 		return static::loadFromSqlRow($row);
