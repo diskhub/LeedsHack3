@@ -10,6 +10,18 @@ class leedshack__smsController extends leedshack__AbstractController {
 		//is the message a join or stop command?
 		if(stripos($message->content,"join") === 0){
 
+			$split = explode(' ',$message->content);
+			try{
+
+				$mdlQuiz = leedshack__QuizModel::loadById($this->app->init_db, $split[1]);
+
+			}catch(Exception $e){
+				var_dump($e);
+				exit;
+			}
+
+
+
 			//add user and join the quiz
 			$mdlUser = new leedshack__UserModel();
 			$mdlQuizUser = new leedshack__QuizUserModel();
@@ -20,16 +32,17 @@ class leedshack__smsController extends leedshack__AbstractController {
 
 				leedshack__UserModel::write($this->app->init_db, $mdlUser);
 				$mdlQuizUser->setUserId($mdlUser->getId());
+				$mdlQuizUser->setQuizId($mdlQuiz->getId());
 				leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);
 
 			}catch(Exception $e){
 				var_dump($e);
 				exit;
 			}
-
 		}elseif(stripos($message->content,"stop") === 0){
 
-			echo "unsub from quiz";
+			//unsub the user from the quiz
+
 
 		}else{
 
