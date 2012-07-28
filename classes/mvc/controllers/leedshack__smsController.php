@@ -20,7 +20,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 				$mdlQuizUser = new leedshack__QuizUserModel();
 
 				$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
-
+				var_dump($user);
 				if(isset($user)){
 					$mdlUser->setId($user->getId());
 					$mdlUser->setPhoneNumber($user->getPhoneNumber());
@@ -28,10 +28,11 @@ class leedshack__smsController extends leedshack__AbstractController {
 					$mdlUser->setPhoneNumber($message->from);
 				}
 
+
 				try{
 					
-					leedshack__UserModel::write($this->app->init_db, $mdlUser);
-					/*$mdlQuizUser->setUserId($mdlUser->getId());
+					/*leedshack__UserModel::write($this->app->init_db, $mdlUser);
+					$mdlQuizUser->setUserId($mdlUser->getId());
 					$mdlQuizUser->setQuizId($mdlQuiz->getId());
 					leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);*/
 
