@@ -43,7 +43,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 
 			//unsub the user from the current quiz they are in
 			//get the user details by their phone number
-			$user = leedshack__UserModel::loadByPhoneNumber($message->from);
+			$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
 			if(!empty($user->id)){
 				//check to see if the user is in an active quiz
 				$activequiz = leedshack__QuizUserModel::loadActiveQuizByUserId($this->app->init_db, $user->id);
@@ -59,7 +59,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 			//this is either an answer to a question or junk
 			
 			//get the user id
-			$user = leedshack__UserModel::loadByPhoneNumber($message->from);
+			$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
 
 			if(!empty($user->id)){
 				//check to see if the user is in an active quiz
