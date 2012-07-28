@@ -25,7 +25,8 @@ class leedshack__Settings extends atsumi_AbstractAppSettings {
 			''	=> 'leedshack__FrontPageController',
 			'ajax'	=> 'leedshack__AjaxController',
 			'sms' 	=> 'leedshack__smsController',
-			'quiz'	=> 'leedshack__QuizController'
+			'quiz'	=> 'leedshack__QuizController',
+			'login' => 'leedshack__LoginController'
 		);
 	}
 

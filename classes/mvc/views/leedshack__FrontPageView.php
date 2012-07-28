@@ -16,7 +16,7 @@ class leedshack__FrontPageView extends leedshack__TemplateView {
                     <div class="span3 well" style="min-height: 185px;">
                     	<h3>Scoreboard</h3>
                     	<div class="progress progress-success" style="background-image: none; background-color: #ee5f5b;">
-                        	<div class="bar" style="width: 60%;">
+                        	<div class="bar" style="width: 60%%;">
                             </div>
                         </div>
                         <p>60% Have Answered Correctly.</p>
