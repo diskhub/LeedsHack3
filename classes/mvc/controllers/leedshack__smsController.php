@@ -16,7 +16,9 @@ class leedshack__smsController extends leedshack__AbstractController {
 				$mdlQuiz = leedshack__QuizModel::loadById($this->app->init_db, $split[1]);
 
 			}catch(Exception $e){
+				echo "<pre>";
 				var_dump($e);
+				echo "</pre>";
 				exit;
 			}
 
@@ -36,7 +38,9 @@ class leedshack__smsController extends leedshack__AbstractController {
 				leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);
 
 			}catch(Exception $e){
+				echo "<pre>";
 				var_dump($e);
+				echo "</pre>";
 				exit;
 			}
 		}elseif(stripos($message->content,"stop") === 0){
