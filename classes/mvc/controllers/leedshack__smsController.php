@@ -1,7 +1,6 @@
 <?php
 class leedshack__smsController extends leedshack__AbstractController {
 	function page_inbound() {
-
 		$message->to = $_GET['to'];
 		$message->from = $_GET['from'];
 		$message->content = $_GET['content'];
