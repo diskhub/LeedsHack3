@@ -6,43 +6,36 @@ class leedshack__smsController extends leedshack__AbstractController {
 		$message->from = (isset($_GET['from']))?$_GET['from']:false;
 		$message->content = (isset($_GET['content']))?urldecode($_GET['content']):false;
 		$message->msg_id = (isset($_GET['msg_id']))?$_GET['msg_id']:false;
-		echo $message->content;
+		
 		//is the message a join or stop command?
 		if(stripos($message->content,"join") === 0){
 
 			$split = explode(' ',$message->content);
-			try{
+			$quiz_id = settype($split[1], "integer");
 
-				$mdlQuiz = leedshack__QuizModel::loadById($this->app->init_db, $split[1]);
+			$quiz = leedshack__QuizModel::loadById($this->app->init_db, $quiz_id);
+			if(isset($quiz)){
+				//add user and join the quiz
+				$mdlUser = new leedshack__UserModel();
+				$mdlQuizUser = new leedshack__QuizUserModel();
 
-			}catch(Exception $e){
-				echo "<pre>";
-				var_dump($e);
-				echo "</pre>";
-				exit;
-			}
+				$mdlUser->setPhoneNumber($message->from);
 
+				try{
 
+					leedshack__UserModel::write($this->app->init_db, $mdlUser);
+					$mdlQuizUser->setUserId($mdlUser->getId());
+					$mdlQuizUser->setQuizId($mdlQuiz->getId());
+					leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);
 
-			//add user and join the quiz
-			$mdlUser = new leedshack__UserModel();
-			$mdlQuizUser = new leedshack__QuizUserModel();
+				}catch(Exception $e){
+					echo "<pre>";
+					var_dump($e);
+					echo "</pre>";
+					exit;
+				}
+			}else echo "no quiz!";
 
-			$mdlUser->setPhoneNumber($message->from);
-
-			try{
-
-				leedshack__UserModel::write($this->app->init_db, $mdlUser);
-				$mdlQuizUser->setUserId($mdlUser->getId());
-				$mdlQuizUser->setQuizId($mdlQuiz->getId());
-				leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);
-
-			}catch(Exception $e){
-				echo "<pre>";
-				var_dump($e);
-				echo "</pre>";
-				exit;
-			}
 		}elseif(stripos($message->content,"stop") === 0){
 
 			//unsub the user from the current quiz they are in
