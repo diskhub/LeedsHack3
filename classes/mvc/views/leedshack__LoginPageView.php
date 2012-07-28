@@ -1,5 +1,5 @@
 <?php
-class leedshack__RegisterPageView extends leedshack__TemplateView {
+class leedshack__LoginPageView extends leedshack__TemplateView {
 	protected function goInnerBodyContent() {
 		pfl('<div class="hero-unit">
                    <h2>PubQuiz Login</h2>
