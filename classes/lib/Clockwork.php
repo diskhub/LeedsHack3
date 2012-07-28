@@ -10,7 +10,7 @@
  */
 
 if ( !class_exists('ClockworkException') ) {
-    require_once('class-ClockworkException.php');
+    require_once('ClockworkException.php');
 }
 
 /**
