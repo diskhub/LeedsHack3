@@ -11,10 +11,10 @@ class leedshack__smsController extends leedshack__AbstractController {
 		if(stripos($message->content,"join") === 0){
 
 			$split = explode(' ',$message->content);
-			var_dump($split);
+			$quiz_id = settype($split[1], "integer");
 			try{
 
-				$mdlQuiz = leedshack__QuizModel::loadById($this->app->init_db, $split[1]);
+				$mdlQuiz = leedshack__QuizModel::loadById($this->app->init_db, $quiz_id);
 
 			}catch(Exception $e){
 				echo "<pre>";
