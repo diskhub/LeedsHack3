@@ -19,7 +19,7 @@ class leedshack__FrontPageView extends leedshack__TemplateView {
                         	<div class="bar" style="width: 60%%;">
                             </div>
                         </div>
-                        <p>60% Have Answered Correctly.</p>
+                        <p>60%% Have Answered Correctly.</p>
                     </div>
                     <div class="span4 well" style="min-height: 185px;">
                     	<h3>Current Question</h3>
