@@ -17,7 +17,8 @@ class leedshack__Settings extends atsumi_AbstractAppSettings {
 	public function init_specification () {
 		return array (	
 			''	=> 'leedshack__FrontPageController',
-			'ajax'	=> 'leedshack__AjaxController'
+			'ajax'	=> 'leedshack__AjaxController',
+			'sms' => 'leedshack__smsController'
 		);
 	}
 }
