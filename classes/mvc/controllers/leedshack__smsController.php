@@ -1,10 +1,14 @@
 <?php
 class leedshack__smsController extends leedshack__AbstractController {
 	function page_inbound() {
-		$message->to = $_GET['to'];
-		$message->from = $_GET['from'];
-		$message->content = $_GET['content'];
-		$message->msg_id = $_GET['msg_id'];
+
+		if(isset($_GET))
+		{
+			$message->to = $_GET['to'];
+			$message->from = $_GET['from'];
+			$message->content = $_GET['content'];
+			$message->msg_id = $_GET['msg_id'];
+		}
 
 		//is the message a join or stop command?
 		if(str_pos($message,"join")==0){
