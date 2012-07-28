@@ -49,7 +49,7 @@ abstract class leedshack__TemplateView extends mvc_HtmlView {
 						</div><!--/.nav-collapse -->
 					</div>
 				</div>
-			</div>
+			</div><hr /><hr />
 			<div class="container">');
 		$this->goInnerBodyContent();
 		pfl('
