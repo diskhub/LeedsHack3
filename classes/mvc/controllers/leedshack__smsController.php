@@ -30,18 +30,18 @@ class leedshack__smsController extends leedshack__AbstractController {
 				$mdlQuizUser->setQuizId($quiz_id);
 				leedshack__QuizUserModel::write($this->app->init_db, $mdlQuizUser);
 
-			}else echo "no quiz!";
+			}
 
 		}elseif(stripos($message->content,"stop") === 0){
 
 			//unsub the user from the current quiz they are in
 			//get the user details by their phone number
 			$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
-			if(isset($user)){
+			if(!empty($user)){
 				//check to see if the user is in an active quiz
 				$activequiz = leedshack__QuizUserModel::loadActiveQuizByUserId($this->app->init_db, $user->id);
 
-				if(isset($activequiz)){
+				if(!empty($activequiz)){
 					//the user is in an active quiz . . delete the row
 					leedshack__QuizUserModel::deleteByUserId($user->id);
 				}
