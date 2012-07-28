@@ -38,13 +38,14 @@ class leedshack__smsController extends leedshack__AbstractController {
 			//get the user details by their phone number
 			$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
 			if(!empty($user)){
-				//check to see if the user is in an active quiz
+				echo "PEW";
+				/*//check to see if the user is in an active quiz
 				$activequiz = leedshack__QuizUserModel::loadActiveQuizByUserId($this->app->init_db, $user->id);
 
 				if(!empty($activequiz)){
 					//the user is in an active quiz . . delete the row
 					leedshack__QuizUserModel::deleteByUserId($user->id);
-				}
+				}*/
 			}
 
 		}else{
