@@ -11,6 +11,7 @@ class leedshack__smsController extends leedshack__AbstractController {
 		if(stripos($message->content,"join") === 0){
 
 			$split = explode(' ',$message->content);
+			var_dump($split);
 			try{
 
 				$mdlQuiz = leedshack__QuizModel::loadById($this->app->init_db, $split[1]);
