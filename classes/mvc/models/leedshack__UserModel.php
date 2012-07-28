@@ -12,9 +12,6 @@ class leedshack__UserModel extends leedshack__BaseModel {
 			'id = %i', $object->getId(),
 			'phonenumber = %s', $object->getPhoneNumber()
 		);
-		if(!$object->getId()){
-			$this->id = mysql_insert_id();
-		}
 	}
 
 	protected static function loadFromSqlRow($row) {
