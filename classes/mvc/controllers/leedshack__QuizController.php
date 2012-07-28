@@ -18,6 +18,15 @@ class leedshack__QuizController extends leedshack__AbstractController {
 
 		if($form->completed()) {
 			// Save the quiz
+			$quiz = new leedshack__QuizModell;
+			$quiz->setName($form->value_name);
+			$quiz->setQmId($this->app->init_user->getId());
+
+			try {
+				leedshack_QuizController::write($this->app->init_db, $quiz);
+			} catch(Exception $e) {
+				$this->push('error', 'Failed to write quiz');
+			}
 		}
 
 		return $form;
