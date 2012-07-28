@@ -20,8 +20,9 @@ class leedshack__smsController extends leedshack__AbstractController {
 				$mdlQuizUser = new leedshack__QuizUserModel();
 
 				$user = leedshack__UserModel::loadByPhoneNumber($this->app->init_db, $message->from);
-				var_dump($user);
-				if(isset($user)){
+				
+				if(!empty($user)){
+					echo "lol";
 					$mdlUser->setId($user->getId());
 					$mdlUser->setPhoneNumber($user->getPhoneNumber());
 				}else{
