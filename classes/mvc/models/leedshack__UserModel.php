@@ -7,23 +7,12 @@ class leedshack__UserModel extends leedshack__BaseModel {
 	protected $phoneNumber;
 	
 	public static function write($db, $object) {
-		if(isset($object->getId)){
-			$db->insertOrUpdateOne(
-				static::$table,
-				'id = %i', $object->getId(),
-				'phonenumber = %s', $object->getPhoneNumber()
-			);
-			if(!$object->getId()){
-				$this->id = mysql_insert_id();
-			}
-		}else{
-			$db->insertOrUpdateOne(
-				static::$table,
-				'phonenumber = %s', $object->getPhoneNumber()
-			);
-			if(!$object->getId()){
-				$this->id = mysql_insert_id();
-			}
+		$db->insertOrUpdateOne(
+			static::$table,
+			'phonenumber = %s', $object->getPhoneNumber()
+		);
+		if(!$object->getId()){
+			$this->id = mysql_insert_id();
 		}
 	}
 
@@ -35,11 +24,12 @@ class leedshack__UserModel extends leedshack__BaseModel {
 
 		return $object;
 	}
+
 	public static function loadByPhoneNumber($db, $phonenumber){
 		$row = $db->selectOne(static::$table,"phonenumber = %s", $phonenumber);
 
 		if(!$row){
-			return null;
+			return false;
 		}
 
 		return static::loadFromSqlRow($row);
