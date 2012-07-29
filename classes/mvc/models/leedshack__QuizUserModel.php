@@ -34,7 +34,7 @@ class leedshack__QuizUserModel extends leedshack__BaseModel {
 			return null;
 		}
 		$quizid = $row->i_quizid;
-		$rw = $db->fetchOne("is_active","quiz", "id = %i", $quizid);
+		$rw = $db->fetchOne("*","quiz", "id = %i", $quizid);
 		return static::loadFromSqlRow($rw);
 	}
 }
