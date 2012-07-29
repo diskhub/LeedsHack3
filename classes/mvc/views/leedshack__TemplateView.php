@@ -66,7 +66,7 @@ abstract class leedshack__TemplateView extends mvc_HtmlView {
 			pfl('<script src="/js/bootstrap-dropdown.js"></script>');
 			pfl('<script src="/js/bootstrap-collapse.js"></script>');
 			pfl('<script src="/js/bootstrap-transition.js"></script>');
-			pfl('<script src="/js/bootstrap-alert.js"></script>
+			pfl('<script src="/js/bootstrap-alert.js"></script>');
 	}
 
 }
