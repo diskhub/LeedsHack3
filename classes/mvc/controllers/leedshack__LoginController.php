@@ -13,14 +13,16 @@ class leedshack__LoginController extends leedshack__AbstractController {
 			'label'		=> 'Username',
 			'validators'	=> array(
 				new validate_Required(true)
-			)
+			),
+			'cssClass'	=> 'span4 w330'
 		));
 		$form->add('widget_PasswordElement', array(
 			'name'		=> 'userpass',
 			'label'		=> 'Password',
 			'validators'	=> array(
 				new validate_Required(true)
-			)
+			),
+			'cssClass'	=> 'span4 w330'
 		));
 
 		if($form->completed()) {

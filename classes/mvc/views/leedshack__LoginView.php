@@ -25,12 +25,12 @@ class leedshack__LoginView extends leedshack__TemplateView {
                                     	<i class="icon-asterisk"></i>
                                     </span> %s
                                 </div>
-                            </div>%s
+                            </div>
                         </div>
                    %s
                 </div>
             </div>
-          </body>', $this->get_form->getFormTop(),$this->get_form->getElement('username'),$this->get_form->getElement('password'),$this->get_form->getFormBottom());
+          </body>', $this->get_form->getFormTop(),$this->get_form->getElement('username'),$this->get_form->getElement('userpass'),$this->get_form->getFormBottom());
 	}
 }
 ?>
