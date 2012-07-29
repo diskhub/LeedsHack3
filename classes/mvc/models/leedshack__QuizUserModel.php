@@ -31,8 +31,8 @@ class leedshack__QuizUserModel extends leedshack__BaseModel {
 	public static function loadActiveQuizByUserId($db, $userid){
 		$row = $db->fetchOne("
 			SELECT * 
-			FROM quizuser qu
-			INNER JOIN quiz q
+			FROM quizuser.qu
+			INNER JOIN quiz.q
 			ON qu.quizid = q.id
 			WHERE qu.userid = %i
 			AND q.isactive = 1
