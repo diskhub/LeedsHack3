@@ -39,8 +39,8 @@ abstract class leedshack__TemplateView extends mvc_HtmlView {
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="icon-user"></i> Login / Register</a></li><!-- Only visible if logged out -->
-                                    <li><a href="#"><i class="icon-off"></i> Logout</a></li><!-- Only visible if logged in -->
+                                    <li><a href="/login"><i class="icon-user"></i> Login / Register</a></li><!-- Only visible if logged out -->
+                                    <li><a href="/register"><i class="icon-off"></i> Logout</a></li><!-- Only visible if logged in -->
                                 </ul>
                             </li>
                             <li class="dropdown">
