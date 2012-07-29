@@ -3,7 +3,7 @@ class leedshack__Settings extends atsumi_AbstractAppSettings {
 	/* we can setup base settings here, can be useful for version numbers etc */
 	protected $settings = 	array (
 					'siteName'	=> 'My Atsumi powered website!',
-					'debug'		=> true,
+					'debug'		=> false,
 					'cli'		=> false,
 					'dbHost'	=> '127.0.0.1',
 					'dbPort'	=> '3306',
