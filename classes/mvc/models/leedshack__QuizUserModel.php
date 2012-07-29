@@ -34,11 +34,10 @@ class leedshack__QuizUserModel extends leedshack__BaseModel {
 			FROM quizuser qu
 			INNER JOIN quiz q
 			ON qu.quizid = q.id
-			WHERE qu.userid = %i
-			AND q.is_active = 1
+			WHERE qu.userid = '$userid'
+			AND q.is_active = '1'
 			ORDER BY qu.id DESC
-			"
-			,$userid);
+			");
 		var_dump($row);
 
 		//return static::loadFromSqlRow($row);
