@@ -46,8 +46,6 @@ abstract class leedshack__TemplateView extends mvc_HtmlView {
                             <li class="dropdown">
                             	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                	<li class="nav-header">Quiz</li>
-                                	<li class="divider"></li>
                                		<li><a href="#"><i class="icon-pencil"></i> New Quiz</a></li>
                                     <li><a href="#"><i class="icon-pencil"></i> Manage Quiz\'</a></li>
                                 </ul>
