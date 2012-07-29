@@ -29,21 +29,13 @@ class leedshack__QuizUserModel extends leedshack__BaseModel {
 	}
 
 	public static function loadActiveQuizByUserId($db, $userid){
-		$row = $db->selectOne("
-			SELECT * 
-			FROM quizuser qu
-			INNER JOIN quiz q
-			ON qu.quizid = q.id
-			WHERE qu.userid = %i
-			AND q.isactive = 1
-			ORDER BY qu.id DESC
-			"
-			,$userid);
+		$row = $db->fetchOne("*",static::$table, "userid = %i",$userid);
 		if(!$row){
 			return null;
 		}
-
-		return static::loadFromSqlRow($row);
+		$quizid = $row->i_quizid;
+		$rw = $db->fetchOne("is_active","quiz", "id = %i", $quizid);
+		return static::loadFromSqlRow($rw);
 	}
 }
 ?>
