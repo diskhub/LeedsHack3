@@ -32,11 +32,7 @@ class leedshack__LoginPageView extends leedshack__TemplateView {
                         </div>
                    </form>
                 </div>
-                
             </div>
-          </body>
-            <script>
-				$(".dropdown-toggle").dropdown();
-            </script>');	
+          </body>');	
 	}
 }
