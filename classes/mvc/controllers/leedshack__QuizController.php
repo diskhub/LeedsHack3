@@ -1,5 +1,19 @@
 <?php
 class leedshack__QuizController extends leedshack__AbstractController {
+
+	public function preProcess() {
+		if(!$this->app->init_session->get('user')) {
+			$this->redirect('/login');
+		}
+	}
+
+	public function page_index() {
+		$quizzes = leedshack__QuizModel::loadAllByUserId($this->app->init_db, $this->app->init_session->get('user')->getId());
+
+		$this->set('quizzes', $quizzes);
+		$this->setView('leedshack__QuizView');
+	}
+
 	public function page_add() {
 		$form = $this->SaveQuizForm();
 		$this->set('form', $form);
@@ -47,7 +61,7 @@ class leedshack__QuizController extends leedshack__AbstractController {
 			// Save the quiz
 			$quiz = new leedshack__QuizModel;
 			$quiz->setName($form->value_name);
-			$quiz->setQmId(1);//$this->app->init_user->getId());
+			$quiz->setQmId($this->app->init_session->get('user')->getId());//$this->app->init_user->getId());
 
 			try {
 				leedshack__QuizModel::write($this->app->init_db, $quiz);

@@ -31,7 +31,7 @@ class leedshack__QuizMasterModel extends leedshack__BaseModel {
 		if(!$user) {
 			return false;
 		}
-		return $user;
+		return static::loadFromSqlRow($user);
 	}
 
 	public static function loadById($db, $id) {

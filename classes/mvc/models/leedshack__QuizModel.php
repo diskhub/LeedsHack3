@@ -39,5 +39,19 @@ class leedshack__QuizModel extends leedshack__BaseModel {
 		}
 		return static::loadFromSqlRow($row);
 	}
+
+	public static function loadAllByUserId($db, $userId) {
+		$rows = $db->fetch('*', static::$table, 'qm_id = %i', (string)$userId);
+		if(!$rows) { 
+			return array();
+		}
+
+		$quizzes = array();
+		foreach($rows as $row) {
+			$quizzes[] = static::loadFromSqlRow($row);
+		}
+
+		return $quizzes;
+	}
 }
 ?>
