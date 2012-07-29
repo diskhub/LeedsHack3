@@ -29,9 +29,6 @@ class leedshack__FrontPageView extends leedshack__TemplateView {
                     </div>
                 </div>
             </div>
-          </body>
-            <script>
-				$(".dropdown-toggle").dropdown();
-            </script>');	
+          </body>');	
 	}
 }
