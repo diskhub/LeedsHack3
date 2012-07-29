@@ -41,11 +41,10 @@ class leedshack__smsController extends leedshack__AbstractController {
 
 				//check to see if the user is in an active quiz
 				$activequiz = leedshack__QuizUserModel::loadActiveQuizByUserId($this->app->init_db, $user->getId());
-				
+
 				if(!empty($activequiz)){
-					echo "pewpew";
 					//the user is in an active quiz . . delete the row
-					//leedshack__QuizUserModel::deleteByUserId($user->id);
+					leedshack__QuizUserModel::deleteByUserId($user->id);
 				}
 			}
 
