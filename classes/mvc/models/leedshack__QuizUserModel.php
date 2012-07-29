@@ -39,11 +39,9 @@ class leedshack__QuizUserModel extends leedshack__BaseModel {
 			ORDER BY qu.id DESC
 			"
 			,$userid);
-		if(!$row){
-			return null;
-		}
+		var_dump($row);
 
-		return static::loadFromSqlRow($row);
+		//return static::loadFromSqlRow($row);
 	}
 }
 ?>
